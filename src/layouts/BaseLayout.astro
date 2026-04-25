@@ -83,6 +83,11 @@ const schema = {
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Suppress framer-motion reduced motion warning -->
+    <script is:inline>
+      window.__FRAMER_MOTION_REDUCED_MOTION_WARNING__ = false;
+    </script>
+
     <!-- JSON-LD Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>

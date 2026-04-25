@@ -34,7 +34,7 @@ export default function StaggerContainer({
   staggerDelay = 0.1,
 }: StaggerContainerProps) {
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion="never">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -63,7 +63,7 @@ export function StaggerItem({
   className?: string;
 }) {
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion="never">
       <motion.div variants={item} className={className}>
         {children}
       </motion.div>

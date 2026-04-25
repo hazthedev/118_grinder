@@ -19,7 +19,7 @@ export default function AnimatedSection({
   once = true,
 }: FadeInProps) {
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion="never">
       <motion.div
         initial={{ opacity: 0, y }}
         whileInView={{ opacity: 1, y: 0 }}

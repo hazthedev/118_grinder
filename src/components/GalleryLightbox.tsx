@@ -58,7 +58,7 @@ function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
   const img = images[index];
 
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion="never">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

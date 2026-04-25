@@ -36,7 +36,7 @@ export default function MenuPageClient() {
   }, [activeCategory, activeFilters]);
 
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion="never">
       <div className="bg-off-white pb-20 sm:pb-28">
         {/* Tabs */}
         <div className="sticky top-16 sm:top-20 z-40 bg-off-white/95 backdrop-blur-md border-b border-wheat-beige/50">
