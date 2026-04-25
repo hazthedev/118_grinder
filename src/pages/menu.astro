@@ -1,4 +1,15 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MenuHero from '../sections/MenuHero.astro';
+import MenuOrderCTA from '../sections/MenuOrderCTA.astro';
+import MenuPageClient from '../components/MenuPageClient';
+
+const title = 'Menu | 118 Grinder — Specialty Coffee & Desserts in Wangsa Maju';
+const description = 'Browse our menu of specialty coffee, viral desserts, pasta, and bites. Spanish Latte, Tiramisu, and more. Halal. Wangsa Maju, KL.';
 ---
 
-<h1>Menu</h1>
+<BaseLayout title={title} description={description}>
+  <MenuHero />
+  <MenuPageClient client:load />
+  <MenuOrderCTA />
+</BaseLayout>

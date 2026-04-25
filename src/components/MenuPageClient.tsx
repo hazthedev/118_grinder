@@ -1,0 +1,159 @@
+import { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import menuData from '../data/menu.json';
+
+const categories = menuData.map((c) => c.category);
+const allTags = ['Halal', 'Vegetarian', 'Signature', 'Caffeine-free'];
+
+export default function MenuPageClient() {
+  const [activeCategory, setActiveCategory] = useState('Coffee');
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+
+  const toggleFilter = (tag: string) => {
+    setActiveFilters((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+    );
+  };
+
+  const items = useMemo(() => {
+    const cat = menuData.find((c) => c.category === activeCategory);
+    if (!cat) return [];
+    return cat.items.filter((item) => {
+      if (activeFilters.length === 0) return true;
+      const itemTags = item.tags.map((t) =>
+        t === 'halal'
+          ? 'Halal'
+          : t === 'vegetarian'
+          ? 'Vegetarian'
+          : t === 'signature'
+          ? 'Signature'
+          : t === 'caffeine-free'
+          ? 'Caffeine-free'
+          : t
+      );
+      return activeFilters.every((f) => itemTags.includes(f));
+    });
+  }, [activeCategory, activeFilters]);
+
+  return (
+    <div className="bg-off-white pb-20 sm:pb-28">
+      {/* Tabs */}
+      <div className="sticky top-16 sm:top-20 z-40 bg-off-white/95 backdrop-blur-md border-b border-wheat-beige/50">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto py-3 no-scrollbar">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`relative shrink-0 px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-green ${
+                  activeCategory === cat
+                    ? 'text-deep-forest'
+                    : 'text-sage-grey hover:text-deep-forest'
+                }`}
+              >
+                {cat}
+                {activeCategory === cat && (
+                  <motion.span
+                    layoutId="menuTab"
+                    className="absolute inset-0 rounded-full border-2 border-pistachio"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Filters */}
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 pt-6 pb-2">
+        <div className="flex flex-wrap items-center gap-2">
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              onClick={() => toggleFilter(tag)}
+              className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-green ${
+                activeFilters.includes(tag)
+                  ? 'bg-pistachio/20 border-pistachio text-deep-forest'
+                  : 'bg-transparent border-wheat-beige text-sage-grey hover:border-pistachio/50'
+              }`}
+            >
+              {tag === 'Halal' && activeFilters.includes(tag) ? 'Halal ✓' : tag}
+            </button>
+          ))}
+          {activeFilters.length > 0 && (
+            <button
+              onClick={() => setActiveFilters([])}
+              className="text-xs text-sage-grey hover:text-terracotta underline underline-offset-2 ml-1"
+            >
+              Clear
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Grid */}
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 pt-8">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory + activeFilters.join(',')}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          >
+            {items.map((item, i) => (
+              <motion.article
+                key={item.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="group relative flex flex-col bg-cream rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(157,190,141,0.18)]"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden bg-wheat-beige">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                  {item.signature && (
+                    <span className="absolute top-3 left-3 bg-pistachio text-deep-forest text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
+                      Signature
+                    </span>
+                  )}
+                </div>
+                <div className="p-5 flex flex-col gap-1">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className="font-display text-lg text-deep-forest">{item.name}</h3>
+                    <span className="text-sm font-medium text-forest-green whitespace-nowrap">
+                      RM {item.price}
+                    </span>
+                  </div>
+                  <p className="text-sm italic text-sage-grey leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {items.length === 0 && (
+          <div className="text-center py-20">
+            <p className="text-sage-grey text-sm">
+              No items match these filters in {activeCategory}.
+            </p>
+            <button
+              onClick={() => setActiveFilters([])}
+              className="mt-3 text-sm text-forest-green hover:underline underline-offset-2"
+            >
+              Clear filters
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
