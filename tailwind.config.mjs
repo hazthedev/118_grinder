@@ -37,6 +37,10 @@ export default {
           '100%': { transform: 'scale(1)' },
         },
       },
+      transitionTimingFunction: {
+        'breathe': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+        'out-soft': 'cubic-bezier(0.0, 0.0, 0.2, 1)',
+      },
     },
   },
   plugins: [],

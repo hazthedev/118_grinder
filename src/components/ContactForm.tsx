@@ -73,7 +73,7 @@ export default function ContactForm() {
                 id="name"
                 name="name"
                 required
-                className="w-full rounded-xl border border-wheat-beige bg-off-white px-4 py-3 text-sm text-deep-forest placeholder:text-sage-grey/60 focus:outline-none focus:ring-2 focus:ring-pistachio/50 transition-shadow"
+                className="w-full rounded-xl border border-wheat-beige bg-off-white px-4 py-3 text-sm text-deep-forest placeholder:text-sage-grey/60 focus:outline-none focus:ring-2 focus:ring-pistachio/50 transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
                 placeholder="Your name"
               />
             </div>
@@ -86,7 +86,7 @@ export default function ContactForm() {
                 id="contact"
                 name="contact"
                 required
-                className="w-full rounded-xl border border-wheat-beige bg-off-white px-4 py-3 text-sm text-deep-forest placeholder:text-sage-grey/60 focus:outline-none focus:ring-2 focus:ring-pistachio/50 transition-shadow"
+                className="w-full rounded-xl border border-wheat-beige bg-off-white px-4 py-3 text-sm text-deep-forest placeholder:text-sage-grey/60 focus:outline-none focus:ring-2 focus:ring-pistachio/50 transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
                 placeholder="How can we reach you?"
               />
             </div>
@@ -111,7 +111,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium bg-forest-green text-cream hover:bg-deep-forest transition-colors duration-300 disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-forest-green"
+              className="w-full inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium bg-forest-green text-cream hover:bg-deep-forest transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-forest-green"
             >
               {status === 'submitting' ? 'Sending...' : 'Send Message'}
             </button>
