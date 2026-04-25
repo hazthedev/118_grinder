@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import '../styles/global.css';
+import site from '../data/site.json';
 
 export interface Props {
   title: string;
@@ -11,8 +12,42 @@ export interface Props {
   canonical?: string;
 }
 
-const { title, description, ogImage = '/images/og-default.jpg', canonical } = Astro.props;
+const { title, description, ogImage = 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200&h=630&fit=crop&q=80', canonical } = Astro.props;
 const siteUrl = 'https://118grinder.vercel.app';
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CafeOrCoffeeShop',
+  name: site.name,
+  description: site.description,
+  url: siteUrl,
+  telephone: site.phone,
+  priceRange: site.priceRange,
+  servesCuisine: site.servesCuisine,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.area,
+    addressRegion: site.address.city,
+    postalCode: site.address.postcode,
+    addressCountry: site.address.country,
+  },
+  openingHoursSpecification: Object.entries(site.hours)
+    .filter(([, h]) => !h.closed)
+    .map(([day, h]) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: day.charAt(0).toUpperCase() + day.slice(1),
+      opens: h.open,
+      closes: h.close,
+    })),
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: site.ratings.google.score,
+    reviewCount: site.ratings.google.count,
+  },
+  sameAs: [site.social.instagram, site.social.tiktok],
+};
 ---
 
 <!DOCTYPE html>
@@ -29,14 +64,14 @@ const siteUrl = 'https://118grinder.vercel.app';
     <meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:image" content={ogImageUrl} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={`${siteUrl}${Astro.url.pathname}`} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,6 +82,9 @@ const siteUrl = 'https://118grinder.vercel.app';
     />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body class="min-h-screen bg-off-white text-deep-forest font-body antialiased pt-16 sm:pt-20">
     <Navbar />
