@@ -25,7 +25,7 @@ import site from '../data/site.json';
       <!-- Details -->
       <div class="flex flex-col gap-8">
         <div>
-          <span class="text-xs font-medium uppercase tracking-[0.2em] text-pistachio">Address</span>
+          <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Address</span>
           <p class="mt-2 text-base sm:text-lg text-deep-forest leading-relaxed">
             {site.address.street}<br />
             {site.address.area}, {site.address.postcode} {site.address.city}, {site.address.country}
@@ -33,7 +33,7 @@ import site from '../data/site.json';
         </div>
 
         <div>
-          <span class="text-xs font-medium uppercase tracking-[0.2em] text-pistachio">Contact</span>
+          <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Contact</span>
           <div class="mt-2 flex flex-col gap-2">
             <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="text-base text-deep-forest hover:text-forest-green transition-colors">
               {site.phone}
@@ -45,7 +45,7 @@ import site from '../data/site.json';
         </div>
 
         <div>
-          <span class="text-xs font-medium uppercase tracking-[0.2em] text-pistachio">Parking</span>
+          <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Parking</span>
           <p class="mt-2 text-base text-sage-grey leading-relaxed">
             Street parking available along Jalan Wangsa Delima 5. Malls and shop lots nearby for additional parking on busy weekends.
           </p>
