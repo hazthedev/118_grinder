@@ -1,0 +1,185 @@
+[
+  {
+    "category": "Coffee",
+    "items": [
+      {
+        "name": "Spanish Latte",
+        "description": "Smooth, sweet, slightly nutty. Our most-ordered. Get it iced.",
+        "price": 14,
+        "image": "/images/drinks/spanish-latte.jpg",
+        "tags": ["halal", "signature", "caffeine"],
+        "signature": true
+      },
+      {
+        "name": "Americano",
+        "description": "Double shot, hot water, no drama.",
+        "price": 10,
+        "image": "/images/drinks/americano.jpg",
+        "tags": ["halal", "caffeine"]
+      },
+      {
+        "name": "Cappuccino",
+        "description": "Espresso with velvety steamed milk and a dusting of cocoa.",
+        "price": 12,
+        "image": "/images/drinks/cappuccino.jpg",
+        "tags": ["halal", "caffeine"]
+      },
+      {
+        "name": "Flat White",
+        "description": "Silky microfoam over a double ristretto. For the purists.",
+        "price": 13,
+        "image": "/images/drinks/flat-white.jpg",
+        "tags": ["halal", "caffeine"]
+      },
+      {
+        "name": "Hershey's Mocha",
+        "description": "Rich chocolate meets bold espresso. Comfort in a cup.",
+        "price": 15,
+        "image": "/images/drinks/mocha.jpg",
+        "tags": ["halal", "caffeine"]
+      }
+    ]
+  },
+  {
+    "category": "Non-Coffee",
+    "items": [
+      {
+        "name": "Matcha Strawberry",
+        "description": "Earthy matcha layered with sweet strawberry. Pretty and balanced.",
+        "price": 16,
+        "image": "/images/drinks/matcha-strawberry.jpg",
+        "tags": ["halal", "signature", "caffeine-free"],
+        "signature": true
+      },
+      {
+        "name": "Pandan Colada",
+        "description": "Tropical, creamy, and unmistakably local. A crowd favorite.",
+        "price": 15,
+        "image": "/images/drinks/pandan-colada.jpg",
+        "tags": ["halal", "signature", "caffeine-free"],
+        "signature": true
+      },
+      {
+        "name": "Chocolate",
+        "description": "Rich, warm, and made for slow sipping.",
+        "price": 13,
+        "image": "/images/drinks/chocolate.jpg",
+        "tags": ["halal", "caffeine-free"]
+      },
+      {
+        "name": "Lemonade",
+        "description": "Fresh, tart, and bright. Exactly what you need on a warm afternoon.",
+        "price": 11,
+        "image": "/images/drinks/lemonade.jpg",
+        "tags": ["halal", "caffeine-free"]
+      }
+    ]
+  },
+  {
+    "category": "Specialty Drinks",
+    "items": [
+      {
+        "name": "Dirty Matcha",
+        "description": "Matcha with a shot of espresso. For when you need both worlds.",
+        "price": 16,
+        "image": "/images/drinks/dirty-matcha.jpg",
+        "tags": ["halal", "caffeine"]
+      },
+      {
+        "name": "Sea Salt Latte",
+        "description": "Creamy latte capped with sea salt foam. Unexpectedly addictive.",
+        "price": 15,
+        "image": "/images/drinks/sea-salt-latte.jpg",
+        "tags": ["halal", "caffeine"]
+      }
+    ]
+  },
+  {
+    "category": "Desserts",
+    "items": [
+      {
+        "name": "Tiramisu",
+        "description": "Viral for a reason. Layers of coffee-soaked sponge and mascarpone.",
+        "price": 18,
+        "image": "/images/desserts/tiramisu.jpg",
+        "tags": ["halal", "signature"],
+        "signature": true
+      },
+      {
+        "name": "Vanilla Cheesecake",
+        "description": "Silky, light, and just sweet enough. A quiet classic.",
+        "price": 16,
+        "image": "/images/desserts/vanilla-cheesecake.jpg",
+        "tags": ["halal", "signature", "vegetarian"],
+        "signature": true
+      },
+      {
+        "name": "Chocolate Cremeux",
+        "description": "Dense, dark, and deeply chocolatey. For serious dessert people.",
+        "price": 17,
+        "image": "/images/desserts/chocolate-cremeux.jpg",
+        "tags": ["halal", "signature", "vegetarian"],
+        "signature": true
+      },
+      {
+        "name": "Carrot Cake",
+        "description": "Spiced, moist, and topped with cream cheese frosting.",
+        "price": 15,
+        "image": "/images/desserts/carrot-cake.jpg",
+        "tags": ["halal", "vegetarian"]
+      }
+    ]
+  },
+  {
+    "category": "Pasta",
+    "items": [
+      {
+        "name": "Mushroom Alfredo Penne",
+        "description": "Creamy alfredo with sauteed mushrooms. Warm and filling.",
+        "price": 22,
+        "image": "/images/food/mushroom-alfredo.jpg",
+        "tags": ["halal", "vegetarian"]
+      },
+      {
+        "name": "Classic Bolognese Linguine",
+        "description": "Slow-cooked beef bolognese over al dente linguine.",
+        "price": 24,
+        "image": "/images/food/bolognese.jpg",
+        "tags": ["halal"]
+      },
+      {
+        "name": "Aglio Olio",
+        "description": "Garlic, olive oil, chili flakes, and parsley. Simple and honest.",
+        "price": 20,
+        "image": "/images/food/aglio-olio.jpg",
+        "tags": ["halal", "vegetarian"]
+      }
+    ]
+  },
+  {
+    "category": "Bites",
+    "items": [
+      {
+        "name": "Chicken Popcorn",
+        "description": "Crispy bite-sized chicken. Perfect with anything.",
+        "price": 16,
+        "image": "/images/food/chicken-popcorn.jpg",
+        "tags": ["halal"]
+      },
+      {
+        "name": "Chicken Tenders",
+        "description": "Golden, crunchy, and made for dipping.",
+        "price": 18,
+        "image": "/images/food/chicken-tenders.jpg",
+        "tags": ["halal"]
+      },
+      {
+        "name": "Crispy Chicken Burger",
+        "description": "A proper burger with slaw and our house sauce.",
+        "price": 20,
+        "image": "/images/food/chicken-burger.jpg",
+        "tags": ["halal"]
+      }
+    ]
+  }
+]
