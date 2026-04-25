@@ -1,0 +1,46 @@
+---
+import Container from '../components/Container.astro';
+import site from '../data/site.json';
+
+const schedule = [
+  { label: 'Monday', key: 'monday' as const },
+  { label: 'Tuesday', key: 'tuesday' as const },
+  { label: 'Wednesday', key: 'wednesday' as const },
+  { label: 'Thursday', key: 'thursday' as const },
+  { label: 'Friday', key: 'friday' as const },
+  { label: 'Saturday', key: 'saturday' as const },
+  { label: 'Sunday', key: 'sunday' as const },
+];
+
+const todayIndex = new Date().getDay(); // 0 = Sunday
+const todayKey = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][todayIndex] as typeof schedule[number]['key'];
+---
+
+<section class="bg-off-white py-20 sm:py-28">
+  <Container>
+    <div class="max-w-xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="text-xs font-medium uppercase tracking-[0.2em] text-pistachio">Hours</span>
+        <h2 class="font-display text-3xl sm:text-4xl text-deep-forest mt-3">When we're open</h2>
+      </div>
+
+      <div class="bg-cream rounded-2xl overflow-hidden border border-wheat-beige/50">
+        {schedule.map((day, i) => {
+          const hours = site.hours[day.key];
+          const isToday = day.key === todayKey;
+          const isClosed = hours.closed;
+          return (
+            <div class={`flex items-center justify-between px-6 py-4 ${i !== schedule.length - 1 ? 'border-b border-wheat-beige/40' : ''} ${isToday ? 'bg-pistachio/10' : ''}`}>
+              <span class={`text-sm font-medium ${isToday ? 'text-deep-forest' : 'text-sage-grey'}`}>
+                {day.label} {isToday && <span class="text-[10px] uppercase tracking-wider text-pistachio ml-1">(today)</span>}
+              </span>
+              <span class={`text-sm ${isClosed ? 'text-pistachio font-semibold' : 'text-deep-forest'}`}>
+                {isClosed ? `Closed — our day off` : `${hours.open} – ${hours.close}`}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </Container>
+</section>

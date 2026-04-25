@@ -1,0 +1,28 @@
+---
+const images = [
+  { src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80', alt: 'Pistachio green bar with plants' },
+  { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80', alt: 'Rattan chairs and natural light' },
+  { src: 'https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=800&q=80', alt: 'Latte art station' },
+  { src: 'https://images.unsplash.com/photo-1507133750069-69d3cdad863a?w=800&q=80', alt: 'Plant-filled corner with window seat' },
+];
+---
+
+<section class="bg-cream py-12 sm:py-16">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+    <p class="text-center text-sm text-sage-grey mb-8 max-w-md mx-auto">
+      "Plants, pistachio, and a window seat that's almost always free."
+    </p>
+    <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 no-scrollbar">
+      {images.map((img) => (
+        <div class="snap-center shrink-0 w-[75vw] sm:w-[45vw] lg:w-[30vw] aspect-[4/3] rounded-2xl overflow-hidden bg-wheat-beige">
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

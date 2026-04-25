@@ -1,4 +1,23 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VisitHero from '../sections/VisitHero.astro';
+import SpaceCarousel from '../sections/SpaceCarousel.astro';
+import HoursTable from '../sections/HoursTable.astro';
+import VisitDetails from '../sections/VisitDetails.astro';
+import CafeHoppers from '../sections/CafeHoppers.astro';
+import ContactForm from '../components/ContactForm';
+import SocialBlock from '../sections/SocialBlock.astro';
+
+const title = 'Visit Us | 118 Grinder — Wangsa Maju, KL';
+const description = 'Find 118 Grinder at 65 Jalan Wangsa Delima 5, Wangsa Maju. Closed Mondays. Specialty coffee, viral desserts, and a pistachio-green corner. Halal.';
 ---
 
-<h1>Visit Us</h1>
+<BaseLayout title={title} description={description}>
+  <VisitHero />
+  <SpaceCarousel />
+  <HoursTable />
+  <VisitDetails />
+  <CafeHoppers />
+  <ContactForm client:load />
+  <SocialBlock />
+</BaseLayout>
