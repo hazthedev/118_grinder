@@ -1,0 +1,52 @@
+---
+import Container from '../components/Container.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import MenuCard from '../components/MenuCard.astro';
+
+const sweets = [
+  {
+    name: 'Tiramisu',
+    description: 'Viral for a reason. Layers of coffee-soaked sponge and mascarpone.',
+    price: 'RM 18',
+    image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80',
+    signature: true,
+  },
+  {
+    name: 'Vanilla Cheesecake',
+    description: 'Silky, light, and just sweet enough. A quiet classic.',
+    price: 'RM 16',
+    image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80',
+    signature: true,
+  },
+  {
+    name: 'Chocolate Cremeux',
+    description: 'Dense, dark, and deeply chocolatey. For serious dessert people.',
+    price: 'RM 17',
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=80',
+    signature: true,
+  },
+  {
+    name: 'Carrot Cake',
+    description: 'Spiced, moist, and topped with cream cheese frosting.',
+    price: 'RM 15',
+    image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80',
+    signature: false,
+  },
+];
+---
+
+<section class="bg-cream">
+  <Container class="py-20 sm:py-28">
+    <SectionHeading
+      eyebrow="Sweet Things"
+      title="Small menu, made fresh."
+      subtitle="Best enjoyed slowly, with a second drink you didn't plan on ordering."
+      class="mb-12 sm:mb-16"
+    />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {sweets.map((sweet) => (
+        <MenuCard {...sweet} />
+      ))}
+    </div>
+  </Container>
+</section>

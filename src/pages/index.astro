@@ -1,4 +1,25 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../sections/Hero.astro';
+import Pillars from '../sections/Pillars.astro';
+import SignatureDrinks from '../sections/SignatureDrinks.astro';
+import SignatureSweets from '../sections/SignatureSweets.astro';
+import TheSpace from '../sections/TheSpace.astro';
+import Gallery from '../sections/Gallery.astro';
+import Reviews from '../sections/Reviews.astro';
+import FindUsTeaser from '../sections/FindUsTeaser.astro';
+
+const title = '118 Grinder | Aesthetic Coffee Bar & Dessert Cafe in Wangsa Maju, KL';
+const description = 'Specialty coffee, viral tiramisu, and a pistachio-green corner in Wangsa Maju. Aesthetic minimalist cafe run by 3 young coffee lovers. Halal. Closed Mondays.';
 ---
 
-<h1>118 Grinder</h1>
+<BaseLayout title={title} description={description}>
+  <Hero />
+  <Pillars />
+  <SignatureDrinks />
+  <SignatureSweets />
+  <TheSpace />
+  <Gallery />
+  <Reviews />
+  <FindUsTeaser />
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+const images = [
+  { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80', alt: 'Latte art in a ceramic cup on a wooden table', aspect: 'square' },
+  { src: 'https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&q=80', alt: 'Minimalist cafe interior with natural light', aspect: 'portrait' },
+  { src: 'https://images.unsplash.com/photo-1507133750069-69d3cdad863a?w=800&q=80', alt: 'Green plants and coffee setup', aspect: 'landscape' },
+  { src: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&q=80', alt: 'Aesthetic dessert plating', aspect: 'portrait' },
+  { src: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80', alt: 'Window seat with coffee and a book', aspect: 'square' },
+];
+---
+
+<section class="bg-off-white py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+    <div class="text-center mb-12 sm:mb-16">
+      <span class="text-xs font-medium uppercase tracking-[0.2em] text-pistachio">Aesthetic</span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-deep-forest mt-3">
+        The feed, in real life.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[180px] sm:auto-rows-[220px]">
+      <div class="col-span-1 row-span-1 rounded-2xl overflow-hidden">
+        <img src={images[0].src} alt={images[0].alt} class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+      </div>
+      <div class="col-span-1 row-span-2 rounded-2xl overflow-hidden">
+        <img src={images[1].src} alt={images[1].alt} class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+      </div>
+      <div class="col-span-2 row-span-1 rounded-2xl overflow-hidden">
+        <img src={images[2].src} alt={images[2].alt} class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+      </div>
+      <div class="col-span-1 row-span-2 rounded-2xl overflow-hidden">
+        <img src={images[3].src} alt={images[3].alt} class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+      </div>
+      <div class="col-span-1 row-span-1 rounded-2xl overflow-hidden">
+        <img src={images[4].src} alt={images[4].alt} class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+import Container from '../components/Container.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import MenuCard from '../components/MenuCard.astro';
+
+const drinks = [
+  {
+    name: 'Spanish Latte',
+    description: 'Smooth, sweet, slightly nutty. Our most-ordered. Get it iced.',
+    price: 'RM 14',
+    image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80',
+    signature: true,
+  },
+  {
+    name: 'Matcha Strawberry',
+    description: 'Earthy matcha layered with sweet strawberry. Pretty and balanced.',
+    price: 'RM 16',
+    image: 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=600&q=80',
+    signature: true,
+  },
+  {
+    name: 'Pandan Colada',
+    description: 'Tropical, creamy, and unmistakably local. A crowd favorite.',
+    price: 'RM 15',
+    image: 'https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=80',
+    signature: true,
+  },
+  {
+    name: "Hershey's Mocha",
+    description: 'Rich chocolate meets bold espresso. Comfort in a cup.',
+    price: 'RM 15',
+    image: 'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=600&q=80',
+    signature: false,
+  },
+];
+---
+
+<section class="bg-off-white">
+  <Container class="py-20 sm:py-28">
+    <SectionHeading
+      eyebrow="Most-Ordered"
+      title="The ones everyone orders."
+      subtitle="We stopped trying to predict it — these just always win."
+      class="mb-12 sm:mb-16"
+    />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {drinks.map((drink) => (
+        <MenuCard {...drink} />
+      ))}
+    </div>
+  </Container>
+</section>
