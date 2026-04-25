@@ -114,21 +114,5 @@
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  .hover-lift,
-  .hover-lift-subtle,
-  .hover-zoom,
-  .hover-zoom-standalone,
-  .hover-color {
-    transition: none !important;
-  }
-  .hover-lift:hover,
-  .hover-lift-subtle:hover {
-    transform: none;
-  }
-  .group:hover .hover-zoom,
-  .hover-zoom-standalone:hover {
-    transform: none;
   }
 }
