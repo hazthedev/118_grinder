@@ -171,17 +171,17 @@ function GalleryCell({
       )}
 
       {/* Hover overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-deep-forest/70 via-deep-forest/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-t from-deep-forest/70 via-deep-forest/20 to-transparent opacity-0 group-hover:opacity-100 transition-[opacity] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]" />
 
       {/* Caption */}
       {image.caption && (
-        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
           <span className="text-sm text-cream font-medium">{image.caption}</span>
         </div>
       )}
 
       {/* Expand icon */}
-      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream/20 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100">
+      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream/20 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-[transform,opacity] duration-400 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
       </div>
     </div>

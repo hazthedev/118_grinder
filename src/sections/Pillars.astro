@@ -27,7 +27,7 @@ const pillars = [
     <StaggerContainer client:visible className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6" staggerDelay={0.12}>
       {pillars.map((pillar) => (
         <StaggerItem>
-          <div class="flex flex-col items-center md:items-start text-center md:text-left gap-4 p-6 rounded-2xl transition-all duration-500 ease-breathe hover:-translate-y-1 hover:bg-wheat-beige/30">
+          <div class="flex flex-col items-center md:items-start text-center md:text-left gap-4 p-6 rounded-2xl hover-lift-subtle">
             <div class="text-pistachio" set:html={pillar.icon} />
             <h3 class="font-display text-xl text-deep-forest">{pillar.title}</h3>
             <p class="text-sm text-sage-grey leading-relaxed max-w-xs">{pillar.description}</p>
