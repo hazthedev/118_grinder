@@ -2,6 +2,7 @@
 import Container from '../components/Container.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import MenuCard from '../components/MenuCard.astro';
+import StaggerContainer, { StaggerItem } from '../components/StaggerContainer';
 
 const sweets = [
   {
@@ -37,16 +38,22 @@ const sweets = [
 
 <section class="bg-cream">
   <Container class="py-20 sm:py-28">
-    <SectionHeading
-      eyebrow="Sweet Things"
-      title="Small menu, made fresh."
-      subtitle="Best enjoyed slowly, with a second drink you didn't plan on ordering."
-      class="mb-12 sm:mb-16"
-    />
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+    <StaggerContainer client:visible className="mb-12 sm:mb-16" staggerDelay={0.08}>
+      <StaggerItem>
+        <SectionHeading
+          eyebrow="Sweet Things"
+          title="Small menu, made fresh."
+          subtitle="Best enjoyed slowly, with a second drink you didn't plan on ordering."
+        />
+      </StaggerItem>
+    </StaggerContainer>
+
+    <StaggerContainer client:visible className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" staggerDelay={0.1}>
       {sweets.map((sweet) => (
-        <MenuCard {...sweet} />
+        <StaggerItem>
+          <MenuCard {...sweet} />
+        </StaggerItem>
       ))}
-    </div>
+    </StaggerContainer>
   </Container>
 </section>

@@ -2,6 +2,7 @@
 import Container from '../components/Container.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import MenuCard from '../components/MenuCard.astro';
+import StaggerContainer, { StaggerItem } from '../components/StaggerContainer';
 
 const drinks = [
   {
@@ -29,7 +30,7 @@ const drinks = [
     name: "Hershey's Mocha",
     description: 'Rich chocolate meets bold espresso. Comfort in a cup.',
     price: 'RM 15',
-    image: 'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?w=600&q=80',
     signature: false,
   },
 ];
@@ -37,16 +38,22 @@ const drinks = [
 
 <section class="bg-off-white">
   <Container class="py-20 sm:py-28">
-    <SectionHeading
-      eyebrow="Most-Ordered"
-      title="The ones everyone orders."
-      subtitle="We stopped trying to predict it — these just always win."
-      class="mb-12 sm:mb-16"
-    />
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+    <StaggerContainer client:visible className="mb-12 sm:mb-16" staggerDelay={0.08}>
+      <StaggerItem>
+        <SectionHeading
+          eyebrow="Most-Ordered"
+          title="The ones everyone orders."
+          subtitle="We stopped trying to predict it — these just always win."
+        />
+      </StaggerItem>
+    </StaggerContainer>
+
+    <StaggerContainer client:visible className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" staggerDelay={0.1}>
       {drinks.map((drink) => (
-        <MenuCard {...drink} />
+        <StaggerItem>
+          <MenuCard {...drink} />
+        </StaggerItem>
       ))}
-    </div>
+    </StaggerContainer>
   </Container>
 </section>

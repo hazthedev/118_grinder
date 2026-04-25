@@ -1,23 +1,18 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
-interface FadeInProps {
+interface AnimatedSectionProps {
   children: ReactNode;
-  delay?: number;
-  duration?: number;
-  y?: number;
   className?: string;
-  once?: boolean;
+  delay?: number;
+  stagger?: number;
 }
 
-export default function FadeIn({
+export default function AnimatedSection({
   children,
-  delay = 0,
-  duration = 0.6,
-  y = 20,
   className = '',
-  once = true,
-}: FadeInProps) {
+  delay = 0,
+}: AnimatedSectionProps) {
   const prefersReduced = useReducedMotion();
 
   if (prefersReduced) {
@@ -26,10 +21,14 @@ export default function FadeIn({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: '-50px' }}
-      transition={{ duration, delay, ease: 'easeOut' }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{
+        duration: 0.7,
+        delay,
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
       className={className}
     >
       {children}

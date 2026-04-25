@@ -6,7 +6,7 @@
         "name": "Spanish Latte",
         "description": "Smooth, sweet, slightly nutty. Our most-ordered. Get it iced.",
         "price": 14,
-        "image": "/images/drinks/spanish-latte.jpg",
+        "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80",
         "tags": ["halal", "signature", "caffeine"],
         "signature": true
       },
@@ -14,28 +14,28 @@
         "name": "Americano",
         "description": "Double shot, hot water, no drama.",
         "price": 10,
-        "image": "/images/drinks/americano.jpg",
+        "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80",
         "tags": ["halal", "caffeine"]
       },
       {
         "name": "Cappuccino",
         "description": "Espresso with velvety steamed milk and a dusting of cocoa.",
         "price": 12,
-        "image": "/images/drinks/cappuccino.jpg",
+        "image": "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=600&q=80",
         "tags": ["halal", "caffeine"]
       },
       {
         "name": "Flat White",
         "description": "Silky microfoam over a double ristretto. For the purists.",
         "price": 13,
-        "image": "/images/drinks/flat-white.jpg",
+        "image": "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=600&q=80",
         "tags": ["halal", "caffeine"]
       },
       {
         "name": "Hershey's Mocha",
         "description": "Rich chocolate meets bold espresso. Comfort in a cup.",
         "price": 15,
-        "image": "/images/drinks/mocha.jpg",
+        "image": "https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?w=600&q=80",
         "tags": ["halal", "caffeine"]
       }
     ]
@@ -47,7 +47,7 @@
         "name": "Matcha Strawberry",
         "description": "Earthy matcha layered with sweet strawberry. Pretty and balanced.",
         "price": 16,
-        "image": "/images/drinks/matcha-strawberry.jpg",
+        "image": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=600&q=80",
         "tags": ["halal", "signature", "caffeine-free"],
         "signature": true
       },
@@ -55,7 +55,7 @@
         "name": "Pandan Colada",
         "description": "Tropical, creamy, and unmistakably local. A crowd favorite.",
         "price": 15,
-        "image": "/images/drinks/pandan-colada.jpg",
+        "image": "https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=80",
         "tags": ["halal", "signature", "caffeine-free"],
         "signature": true
       },
@@ -63,14 +63,14 @@
         "name": "Chocolate",
         "description": "Rich, warm, and made for slow sipping.",
         "price": 13,
-        "image": "/images/drinks/chocolate.jpg",
+        "image": "https://images.unsplash.com/photo-1623855244697-5253ad367da9?w=600&q=80",
         "tags": ["halal", "caffeine-free"]
       },
       {
         "name": "Lemonade",
         "description": "Fresh, tart, and bright. Exactly what you need on a warm afternoon.",
         "price": 11,
-        "image": "/images/drinks/lemonade.jpg",
+        "image": "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=600&q=80",
         "tags": ["halal", "caffeine-free"]
       }
     ]
@@ -82,14 +82,14 @@
         "name": "Dirty Matcha",
         "description": "Matcha with a shot of espresso. For when you need both worlds.",
         "price": 16,
-        "image": "/images/drinks/dirty-matcha.jpg",
+        "image": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=600&q=80",
         "tags": ["halal", "caffeine"]
       },
       {
         "name": "Sea Salt Latte",
         "description": "Creamy latte capped with sea salt foam. Unexpectedly addictive.",
         "price": 15,
-        "image": "/images/drinks/sea-salt-latte.jpg",
+        "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80",
         "tags": ["halal", "caffeine"]
       }
     ]
@@ -101,7 +101,7 @@
         "name": "Tiramisu",
         "description": "Viral for a reason. Layers of coffee-soaked sponge and mascarpone.",
         "price": 18,
-        "image": "/images/desserts/tiramisu.jpg",
+        "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80",
         "tags": ["halal", "signature"],
         "signature": true
       },
@@ -109,7 +109,7 @@
         "name": "Vanilla Cheesecake",
         "description": "Silky, light, and just sweet enough. A quiet classic.",
         "price": 16,
-        "image": "/images/desserts/vanilla-cheesecake.jpg",
+        "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80",
         "tags": ["halal", "signature", "vegetarian"],
         "signature": true
       },
@@ -117,7 +117,7 @@
         "name": "Chocolate Cremeux",
         "description": "Dense, dark, and deeply chocolatey. For serious dessert people.",
         "price": 17,
-        "image": "/images/desserts/chocolate-cremeux.jpg",
+        "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=80",
         "tags": ["halal", "signature", "vegetarian"],
         "signature": true
       },
@@ -125,7 +125,7 @@
         "name": "Carrot Cake",
         "description": "Spiced, moist, and topped with cream cheese frosting.",
         "price": 15,
-        "image": "/images/desserts/carrot-cake.jpg",
+        "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80",
         "tags": ["halal", "vegetarian"]
       }
     ]
@@ -137,21 +137,21 @@
         "name": "Mushroom Alfredo Penne",
         "description": "Creamy alfredo with sauteed mushrooms. Warm and filling.",
         "price": 22,
-        "image": "/images/food/mushroom-alfredo.jpg",
+        "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80",
         "tags": ["halal", "vegetarian"]
       },
       {
         "name": "Classic Bolognese Linguine",
         "description": "Slow-cooked beef bolognese over al dente linguine.",
         "price": 24,
-        "image": "/images/food/bolognese.jpg",
+        "image": "https://images.unsplash.com/photo-1626844131082-256783844137?w=600&q=80",
         "tags": ["halal"]
       },
       {
         "name": "Aglio Olio",
         "description": "Garlic, olive oil, chili flakes, and parsley. Simple and honest.",
         "price": 20,
-        "image": "/images/food/aglio-olio.jpg",
+        "image": "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=600&q=80",
         "tags": ["halal", "vegetarian"]
       }
     ]
@@ -163,21 +163,21 @@
         "name": "Chicken Popcorn",
         "description": "Crispy bite-sized chicken. Perfect with anything.",
         "price": 16,
-        "image": "/images/food/chicken-popcorn.jpg",
+        "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&q=80",
         "tags": ["halal"]
       },
       {
         "name": "Chicken Tenders",
         "description": "Golden, crunchy, and made for dipping.",
         "price": 18,
-        "image": "/images/food/chicken-tenders.jpg",
+        "image": "https://images.unsplash.com/photo-1562967916-eb82221dfb2c?w=600&q=80",
         "tags": ["halal"]
       },
       {
         "name": "Crispy Chicken Burger",
         "description": "A proper burger with slaw and our house sauce.",
         "price": 20,
-        "image": "/images/food/chicken-burger.jpg",
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80",
         "tags": ["halal"]
       }
     ]

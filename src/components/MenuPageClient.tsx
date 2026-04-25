@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import menuData from '../data/menu.json';
 
 const categories = menuData.map((c) => c.category);
@@ -8,6 +8,7 @@ const allTags = ['Halal', 'Vegetarian', 'Signature', 'Caffeine-free'];
 export default function MenuPageClient() {
   const [activeCategory, setActiveCategory] = useState('Coffee');
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
+  const prefersReduced = useReducedMotion();
 
   const toggleFilter = (tag: string) => {
     setActiveFilters((prev) =>
@@ -35,6 +36,21 @@ export default function MenuPageClient() {
     });
   }, [activeCategory, activeFilters]);
 
+  const cardVariants = prefersReduced
+    ? {}
+    : {
+        hidden: { opacity: 0, y: 24 },
+        visible: (i: number) => ({
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.5,
+            delay: i * 0.07,
+            ease: [0.25, 0.1, 0.25, 1],
+          },
+        }),
+      };
+
   return (
     <div className="bg-off-white pb-20 sm:pb-28">
       {/* Tabs */}
@@ -56,7 +72,7 @@ export default function MenuPageClient() {
                   <motion.span
                     layoutId="menuTab"
                     className="absolute inset-0 rounded-full border-2 border-pistachio"
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    transition={prefersReduced ? { duration: 0 } : { type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
               </button>
@@ -97,18 +113,19 @@ export default function MenuPageClient() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory + activeFilters.join(',')}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35 }}
+            initial={prefersReduced ? {} : { opacity: 0, y: 12 }}
+            animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
+            exit={prefersReduced ? {} : { opacity: 0, y: -12 }}
+            transition={prefersReduced ? {} : { duration: 0.35 }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
           >
             {items.map((item, i) => (
               <motion.article
                 key={item.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
                 className="group relative flex flex-col bg-cream rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(157,190,141,0.18)]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-wheat-beige">
@@ -117,7 +134,21 @@ export default function MenuPageClient() {
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                     loading="lazy"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      const fallback = (e.target as HTMLImageElement).nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
                   />
+                  <div className="absolute inset-0 hidden items-center justify-center bg-wheat-beige">
+                    <svg className="w-12 h-12 text-pistachio/40" viewBox="0 0 64 64" fill="none">
+                      <path d="M16 48c0-16 8-24 16-24s16 8 16 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M24 28c0-8 4-12 8-12s8 4 8 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      <ellipse cx="32" cy="20" rx="6" ry="3" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M42 20h4c4 0 6 3 6 7s-2 7-6 7h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M20 48h24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </div>
                   {item.signature && (
                     <span className="absolute top-3 left-3 bg-pistachio text-deep-forest text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
                       Signature

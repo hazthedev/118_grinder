@@ -1,6 +1,7 @@
 ---
 import Container from '../components/Container.astro';
 import Button from '../components/Button.astro';
+import HeroEntrance, { HeroItem } from '../components/HeroEntrance';
 
 const isMonday = new Date().getDay() === 1;
 ---
@@ -10,35 +11,61 @@ const isMonday = new Date().getDay() === 1;
     <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 py-16 sm:py-24 lg:py-32">
       <!-- Text -->
       <div class="flex-1 flex flex-col gap-6 lg:gap-8 text-center lg:text-left">
-        <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">
-          Wangsa Maju &middot; Coffee Bar &middot; Dessert
-        </span>
-        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-deep-forest leading-[1.1]">
-          A quiet corner for serious coffee.
-        </h1>
-        <p class="text-base sm:text-lg text-sage-grey max-w-lg mx-auto lg:mx-0 leading-relaxed">
-          Aesthetic minimalist cafe with specialty coffee, viral desserts, and a pistachio-green corner that's been everyone's favorite spot since opening.
-        </p>
-        {isMonday && (
-          <p class="text-sm font-medium text-terracotta">
-            Closed today (Monday) — see you tomorrow!
-          </p>
-        )}
-        <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mt-2">
-          <Button href="/menu" variant="filled">See the Menu</Button>
-          <Button href="/visit" variant="outline">Visit Us</Button>
-        </div>
+        <HeroEntrance client:load>
+          <HeroItem>
+            <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">
+              Wangsa Maju &middot; Coffee Bar &middot; Dessert
+            </span>
+          </HeroItem>
+
+          <HeroItem>
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-deep-forest leading-[1.1]">
+              A quiet corner for serious coffee.
+            </h1>
+          </HeroItem>
+
+          <HeroItem>
+            <p class="text-base sm:text-lg text-sage-grey max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              Aesthetic minimalist cafe with specialty coffee, viral desserts, and a pistachio-green corner that's been everyone's favorite spot since opening.
+            </p>
+          </HeroItem>
+
+          {isMonday && (
+            <HeroItem>
+              <p class="text-sm font-medium text-terracotta">
+                Closed today (Monday) — see you tomorrow!
+              </p>
+            </HeroItem>
+          )}
+
+          <HeroItem>
+            <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mt-2">
+              <Button href="/menu" variant="filled">See the Menu</Button>
+              <Button href="/visit" variant="outline">Visit Us</Button>
+            </div>
+          </HeroItem>
+        </HeroEntrance>
       </div>
 
       <!-- Image -->
       <div class="flex-1 w-full max-w-md lg:max-w-none">
-        <div class="relative aspect-[4/5] rounded-3xl overflow-hidden bg-wheat-beige animate-subtle-zoom">
+        <div class="relative aspect-[4/5] rounded-3xl overflow-hidden bg-wheat-beige">
           <img
             src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=900&q=80"
             alt="The pistachio-green bar at 118 Grinder with a Spanish Latte in the foreground"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover animate-subtle-zoom"
             loading="eager"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
           />
+          <div class="absolute inset-0 hidden items-center justify-center bg-wheat-beige">
+            <svg class="w-16 h-16 text-pistachio/40" viewBox="0 0 64 64" fill="none">
+              <path d="M16 48c0-16 8-24 16-24s16 8 16 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M24 28c0-8 4-12 8-12s8 4 8 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <ellipse cx="32" cy="20" rx="6" ry="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M42 20h4c4 0 6 3 6 7s-2 7-6 7h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M20 48h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
           <!-- Decorative leaf -->
           <img
             src="/decorations/leaf-branch.svg"
