@@ -19,6 +19,8 @@ const navLinks: NavLink[] = [
 
 export default function NavbarClient({ currentPath, isMonday = false }: NavbarClientProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredHref, setHoveredHref] = useState<string | null>(null);
+  const highlightedHref = hoveredHref ?? currentPath;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,11 +49,17 @@ export default function NavbarClient({ currentPath, isMonday = false }: NavbarCl
             </span>
           </a>
 
-          <nav className="flex items-center gap-6 sm:gap-8">
+          <nav
+            className="flex items-center gap-6 sm:gap-8"
+            onMouseLeave={() => setHoveredHref(null)}
+          >
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
+                onMouseEnter={() => setHoveredHref(link.href)}
+                onFocus={() => setHoveredHref(link.href)}
+                onBlur={() => setHoveredHref(null)}
                 className={`relative text-sm font-medium transition-colors duration-300 ${
                   currentPath === link.href
                     ? 'text-deep-forest'
@@ -59,7 +67,7 @@ export default function NavbarClient({ currentPath, isMonday = false }: NavbarCl
                 }`}
               >
                 {link.label}
-                {currentPath === link.href && (
+                {highlightedHref === link.href && (
                   <motion.span
                     layoutId="navUnderline"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-pistachio rounded-full"
