@@ -1,11 +1,5 @@
 ---
-import Container from './Container.astro';
-
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Menu', href: '/menu' },
-  { label: 'Visit', href: '/visit' },
-];
+import NavbarClient from './NavbarClient';
 
 const currentPath = Astro.url.pathname;
 
@@ -14,41 +8,4 @@ const today = new Date().getDay();
 const isMonday = today === 1;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-off-white/80 backdrop-blur-md border-b border-wheat-beige/50 transition-all duration-500 ease-breathe">
-  <Container class="flex items-center justify-between h-16 sm:h-20">
-    <a href="/" class="flex flex-col leading-none">
-      <span class="font-display text-xl sm:text-2xl text-deep-forest">118 Grinder</span>
-      <span class="text-[10px] uppercase tracking-[0.15em] text-sage-grey mt-0.5">Coffee &middot; Dessert</span>
-    </a>
-
-    <nav class="flex items-center gap-6 sm:gap-8">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class={`relative text-sm font-medium hover-color ${
-            currentPath === link.href
-              ? 'text-deep-forest'
-              : 'text-sage-grey hover:text-deep-forest'
-          }`}
-        >
-          {link.label}
-          {currentPath === link.href && (
-            <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-pistachio rounded-full" />
-          )}
-        </a>
-      ))}
-    </nav>
-  </Container>
-
-  {isMonday && (
-    <div class="bg-pistachio/20 text-center py-1.5 text-xs font-medium text-deep-forest">
-      Closed today — see you tomorrow
-    </div>
-  )}
-</header>
-
-<style>
-  header {
-    padding-top: env(safe-area-inset-top);
-  }
-</style>
+<NavbarClient currentPath={currentPath} isMonday={isMonday} client:load />
