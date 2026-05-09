@@ -9,19 +9,13 @@ export interface Props {
 
 const { variant = 'filled', href, class: className = '', target, rel } = Astro.props;
 
-const base =
-'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium hover-color focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-forest-green';
-
 const variants = {
-  filled:
-      'bg-forest-green text-cream hover:bg-deep-forest hover:shadow-md',
-  outline:
-    'border-2 border-forest-green text-forest-green hover:bg-forest-green hover:text-cream',
-  ghost:
-    'text-forest-green hover:bg-pistachio/20',
+  filled: 'btn-industrial btn-fill',
+  outline: 'btn-industrial btn-outline',
+  ghost: 'btn-industrial btn-ghost',
 };
 
-const classes = `${base} ${variants[variant]} ${className}`;
+const classes = `${variants[variant]} focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#c97b3a] ${className}`;
 ---
 
 {href ? (

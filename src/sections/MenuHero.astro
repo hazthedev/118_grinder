@@ -4,15 +4,30 @@ import SectionHeading from '../components/SectionHeading.astro';
 import AnimatedSection from '../components/AnimatedSection';
 ---
 
-<section class="bg-off-white pt-24 sm:pt-32 pb-12 sm:pb-16">
-  <Container>
+<section class="relative bg-[#f5ead4] pt-28 sm:pt-36 pb-16 sm:pb-20 overflow-hidden">
+  <div class="absolute inset-0 bg-blueprint opacity-40 pointer-events-none"></div>
+  <!-- Slow rotating burr in background -->
+  <div class="pointer-events-none absolute -right-32 top-12 w-96 h-96 hidden lg:block opacity-[0.10]">
+    <svg viewBox="0 0 400 400" class="w-full h-full burr-spin text-[#c97b3a]" fill="none" stroke="currentColor" stroke-width="0.7" aria-hidden="true">
+      <circle cx="200" cy="200" r="195"/>
+      <circle cx="200" cy="200" r="120"/>
+      <circle cx="200" cy="200" r="40"/>
+      {Array.from({ length: 36 }).map((_, i) => (
+        <line x1="200" y1="40" x2="200" y2="80" transform={`rotate(${i * 10} 200 200)`} />
+      ))}
+    </svg>
+  </div>
+  <Container class="relative">
     <AnimatedSection client:visible>
-      <SectionHeading
-        title="The Menu"
-        subtitle="Specialty coffee, slow desserts, and a few favorites for when you're hungry."
-        align="center"
-        class="max-w-2xl mx-auto"
-      />
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="stamp justify-center" style="display:inline-flex;">Roster · Bill of Fare</span>
+        <h1 class="font-display text-6xl sm:text-7xl lg:text-9xl text-espresso leading-[0.86] tracking-tight uppercase mt-5">
+          The Menu
+        </h1>
+        <p class="text-base sm:text-lg text-[#3a2a20] leading-relaxed font-body italic mt-5 max-w-xl mx-auto">
+          Specialty coffee, slow desserts, and a few favorites for when you're hungry.
+        </p>
+      </div>
     </AnimatedSection>
   </Container>
 </section>

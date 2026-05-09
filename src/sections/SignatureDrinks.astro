@@ -36,8 +36,13 @@ const drinks = [
 ];
 ---
 
-<section class="bg-off-white">
-  <Container class="py-20 sm:py-28">
+<section class="relative bg-[#f5ead4] bg-blueprint">
+  <Container class="relative py-20 sm:py-28">
+    <div class="absolute top-10 right-6 hidden md:flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#5c5048]/60">
+      <span>Series — A</span>
+      <span class="block w-12 h-px bg-[#c97b3a]"></span>
+      <span>Beverage Roster</span>
+    </div>
     <StaggerContainer client:visible className="mb-12 sm:mb-16" staggerDelay={0.08}>
       <StaggerItem>
         <SectionHeading
@@ -49,9 +54,9 @@ const drinks = [
     </StaggerContainer>
 
     <StaggerContainer client:visible className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" staggerDelay={0.1}>
-      {drinks.map((drink) => (
+      {drinks.map((drink, i) => (
         <StaggerItem>
-          <MenuCard {...drink} />
+          <MenuCard {...drink} index={i} />
         </StaggerItem>
       ))}
     </StaggerContainer>

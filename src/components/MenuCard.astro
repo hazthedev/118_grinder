@@ -6,42 +6,61 @@ export interface Props {
   image: string;
   signature?: boolean;
   href?: string;
+  index?: number;
 }
 
-const { name, description, price, image, signature = false, href } = Astro.props;
+const { name, description, price, image, signature = false, href, index = 0 } = Astro.props;
+const grade = String((index ?? 0) + 1).padStart(2, '0');
 ---
 
-<article class="group relative flex flex-col bg-cream rounded-2xl overflow-hidden hover-lift">
+<article class="group relative flex flex-col card-spec overflow-hidden">
   <a href={href || '#'} class="block">
-    <div class="relative aspect-[4/5] overflow-hidden bg-wheat-beige">
+    <div class="relative aspect-[4/5] overflow-hidden bg-[#1a0e08]">
       <img
         src={image}
         alt={name}
-        class="w-full h-full object-cover hover-zoom"
+        class="w-full h-full object-cover hover-zoom mix-blend-luminosity opacity-90 group-hover:opacity-100 group-hover:mix-blend-normal transition-all duration-700"
         loading="lazy"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
-      <div class="absolute inset-0 hidden items-center justify-center bg-wheat-beige">
-        <svg class="w-12 h-12 text-pistachio/40" viewBox="0 0 64 64" fill="none">
-          <path d="M16 48c0-16 8-24 16-24s16 8 16 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M24 28c0-8 4-12 8-12s8 4 8 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <ellipse cx="32" cy="20" rx="6" ry="3" stroke="currentColor" stroke-width="2"/>
-          <path d="M42 20h4c4 0 6 3 6 7s-2 7-6 7h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M20 48h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <!-- Inline SVG fallback: portafilter / espresso glass -->
+      <div class="absolute inset-0 hidden items-center justify-center bg-[#2a1610]">
+        <svg class="w-32 h-32 text-[#c97b3a]/60" viewBox="0 0 120 120" fill="none">
+          <rect x="35" y="22" width="50" height="6" rx="1" fill="currentColor" opacity="0.7"/>
+          <rect x="42" y="28" width="36" height="20" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="48" y1="52" x2="72" y2="52" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M52 52 L52 84 Q52 92 60 92 Q68 92 68 84 L68 52" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="56" y1="60" x2="56" y2="84" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
+          <line x1="60" y1="60" x2="60" y2="84" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
+          <line x1="64" y1="60" x2="64" y2="84" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
+          <ellipse cx="60" cy="22" rx="4" ry="2" fill="currentColor" opacity="0.5"/>
         </svg>
       </div>
-      {signature && (
-        <span class="absolute top-3 left-3 bg-pistachio text-deep-forest text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
-          Signature
-        </span>
-      )}
-    </div>
-    <div class="p-5 flex flex-col gap-1">
-      <div class="flex items-baseline justify-between gap-3">
-        <h3 class="font-display text-lg text-deep-forest">{name}</h3>
-        <span class="text-sm font-medium text-forest-green whitespace-nowrap">{price}</span>
+
+      <!-- Top-corner spec stamps -->
+      <div class="absolute top-0 left-0 right-0 flex items-start justify-between p-3 z-10">
+        <span class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#f5ead4]/80">№ {grade}</span>
+        {signature && (
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#1a0e08] bg-[#c97b3a] px-2 py-0.5">
+            Signature
+          </span>
+        )}
       </div>
-      <p class="text-sm italic text-sage-grey leading-relaxed">{description}</p>
+
+      <!-- Bottom gradient + corner ticks -->
+      <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#1a0e08] via-[#1a0e08]/40 to-transparent pointer-events-none"></div>
+      <svg class="absolute bottom-2 right-2 w-6 h-6 text-[#c97b3a]/70" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M14 2 H18 V6" stroke="currentColor" stroke-width="1"/>
+        <path d="M2 14 V18 H6" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <div class="px-5 pt-5 pb-6 flex flex-col gap-2 bg-[#f5ead4]">
+      <div class="flex items-baseline justify-between gap-3 border-b border-[#1a0e08]/15 pb-2">
+        <h3 class="font-display text-2xl tracking-wide uppercase text-espresso leading-none">{name}</h3>
+        <span class="font-mono text-sm text-[#c97b3a] whitespace-nowrap">{price}</span>
+      </div>
+      <p class="text-sm text-[#5c5048] leading-relaxed font-body italic">{description}</p>
     </div>
   </a>
 </article>

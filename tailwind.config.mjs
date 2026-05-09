@@ -4,24 +4,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        'off-white': '#F7F4EE',
-        cream: '#FCFAF4',
-        'deep-forest': '#2A3526',
-        'sage-grey': '#6E7868',
-        pistachio: '#9DBE8D',
-        'forest-green': '#3D5236',
-        terracotta: '#C9876A',
-        'wheat-beige': '#E8DFC9',
+        // Industrial-craft espresso palette
+        espresso: '#1a0e08',
+        cream: '#f5ead4',
+        copper: '#c97b3a',
+        ash: '#5c5048',
+        crema: '#e8c89a',
+        // Legacy aliases re-mapped to new palette so existing class usage adapts visually
+        'off-white': '#f5ead4',
+        'deep-forest': '#1a0e08',
+        'sage-grey': '#5c5048',
+        pistachio: '#c97b3a',
+        'forest-green': '#3a1d10',
+        terracotta: '#c97b3a',
+        'wheat-beige': '#e8c89a',
       },
       fontFamily: {
-        display: ['"DM Serif Display"', 'serif'],
-        body: ['Inter', 'sans-serif'],
-        accent: ['Caveat', 'cursive'],
+        display: ['"Antonio"', '"Bebas Neue"', 'sans-serif'],
+        body: ['"Lora"', 'serif'],
+        accent: ['"DM Serif Text"', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       animation: {
         'fade-in-soft': 'fadeInSoft 0.7s ease-out forwards',
         'gentle-rise': 'gentleRise 0.6s ease-out forwards',
         'subtle-zoom': 'subtleZoom 1s ease-out forwards',
+        'spin-slow': 'spin 60s linear infinite',
+        'spin-slower': 'spin 120s linear infinite',
       },
       keyframes: {
         fadeInSoft: {

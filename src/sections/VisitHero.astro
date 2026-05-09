@@ -3,13 +3,17 @@ import Container from '../components/Container.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 ---
 
-<section class="bg-off-white pt-24 sm:pt-32 pb-12 sm:pb-16">
-  <Container>
-    <SectionHeading
-      title="Come find us."
-      subtitle="Wangsa Maju, Jalan Wangsa Delima 5. Closed Mondays — that's our day off. The rest of the week, we're brewing."
-      align="center"
-      class="max-w-2xl mx-auto"
-    />
+<section class="relative bg-[#f5ead4] pt-28 sm:pt-36 pb-16 sm:pb-20 overflow-hidden">
+  <div class="absolute inset-0 bg-blueprint opacity-40 pointer-events-none"></div>
+  <Container class="relative">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="stamp justify-center" style="display:inline-flex;">Site Plan · Wangsa Maju</span>
+      <h1 class="font-display text-6xl sm:text-7xl lg:text-9xl text-espresso leading-[0.86] tracking-tight uppercase mt-5">
+        Come find us.
+      </h1>
+      <p class="text-base sm:text-lg text-[#3a2a20] leading-relaxed font-body italic mt-5 max-w-xl mx-auto">
+        Wangsa Maju, Jalan Wangsa Delima 5. Closed Mondays — that's our day off. The rest of the week, we're brewing.
+      </p>
+    </div>
   </Container>
 </section>

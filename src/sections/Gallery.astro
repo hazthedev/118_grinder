@@ -42,13 +42,20 @@ const images = [
 ];
 ---
 
-<section class="bg-off-white py-20 sm:py-28">
-  <Container>
-    <AnimatedSection client:visible className="text-center mb-12 sm:mb-16">
-      <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Aesthetic</span>
-      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-deep-forest mt-3">
-        The feed, in real life.
-      </h2>
+<section class="relative bg-[#f5ead4] py-20 sm:py-28">
+  <div class="absolute inset-0 bg-blueprint opacity-30 pointer-events-none"></div>
+  <Container class="relative">
+    <AnimatedSection client:visible className="mb-12 sm:mb-16">
+      <div class="flex flex-col gap-3 items-start">
+        <span class="stamp">Plate Series · Aesthetic</span>
+        <h2 class="font-display text-4xl sm:text-5xl lg:text-7xl text-espresso uppercase tracking-tight leading-[0.95]">
+          The feed, in real life.
+        </h2>
+        <div class="flex items-center gap-3 mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#5c5048]">
+          <span class="text-[#c97b3a]">▲</span>
+          <span>seven plates · field shots</span>
+        </div>
+      </div>
     </AnimatedSection>
 
     <GalleryLightbox client:visible images={images} />

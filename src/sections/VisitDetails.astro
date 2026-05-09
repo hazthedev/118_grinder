@@ -6,12 +6,17 @@ import StaggerContainer, { StaggerItem } from '../components/StaggerContainer';
 import site from '../data/site.json';
 ---
 
-<section class="bg-cream py-20 sm:py-28">
-  <Container>
+<section class="relative bg-[#1a0e08] text-[#f5ead4] py-20 sm:py-28">
+  <div class="absolute inset-0 bg-blueprint opacity-15 pointer-events-none"></div>
+  <Container class="relative">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
       <!-- Map -->
       <AnimatedSection client:visible>
-        <div class="relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[320px] rounded-3xl overflow-hidden bg-wheat-beige">
+        <div class="relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[320px] overflow-hidden bg-[#2a1610] border border-[#c97b3a]/30">
+          <span class="absolute top-0 left-0 w-6 h-6 border-l border-t border-[#c97b3a] z-10"></span>
+          <span class="absolute top-0 right-0 w-6 h-6 border-r border-t border-[#c97b3a] z-10"></span>
+          <span class="absolute bottom-0 left-0 w-6 h-6 border-l border-b border-[#c97b3a] z-10"></span>
+          <span class="absolute bottom-0 right-0 w-6 h-6 border-r border-b border-[#c97b3a] z-10"></span>
           <iframe
             src={site.googleMapsEmbed}
             width="100%"
@@ -21,7 +26,7 @@ import site from '../data/site.json';
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="118 Grinder location on Google Maps"
-            class="absolute inset-0 w-full h-full"
+            class="absolute inset-0 w-full h-full grayscale contrast-105"
           />
         </div>
       </AnimatedSection>
@@ -30,8 +35,8 @@ import site from '../data/site.json';
       <StaggerContainer client:visible className="flex flex-col gap-8" staggerDelay={0.1}>
         <StaggerItem>
           <div>
-            <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Address</span>
-            <p class="mt-2 text-base sm:text-lg text-deep-forest leading-relaxed">
+            <span class="stamp" style="color:#c97b3a;">Address · Coordinates</span>
+            <p class="mt-3 text-lg sm:text-xl text-[#f5ead4] leading-relaxed font-body">
               {site.address.street}<br />
               {site.address.area}, {site.address.postcode} {site.address.city}, {site.address.country}
             </p>
@@ -40,12 +45,12 @@ import site from '../data/site.json';
 
         <StaggerItem>
           <div>
-            <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Contact</span>
-            <div class="mt-2 flex flex-col gap-2">
-              <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="text-base text-deep-forest hover:text-forest-green hover-color">
+            <span class="stamp" style="color:#c97b3a;">Contact · Direct Line</span>
+            <div class="mt-3 flex flex-col gap-2">
+              <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="text-lg text-[#f5ead4] link-copper font-mono tracking-wider w-fit">
                 {site.phone}
               </a>
-              <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" class="text-base text-deep-forest hover:text-forest-green hover-color">
+              <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" class="text-lg text-[#f5ead4] link-copper font-mono tracking-wider w-fit">
                 WhatsApp
               </a>
             </div>
@@ -54,8 +59,8 @@ import site from '../data/site.json';
 
         <StaggerItem>
           <div>
-            <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Parking</span>
-            <p class="mt-2 text-base text-sage-grey leading-relaxed">
+            <span class="stamp" style="color:#c97b3a;">Parking · Notes</span>
+            <p class="mt-3 text-base text-[#e8c89a] leading-relaxed font-body italic">
               Street parking available along Jalan Wangsa Delima 5. Malls and shop lots nearby for additional parking on busy weekends.
             </p>
           </div>

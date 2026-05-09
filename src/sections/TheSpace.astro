@@ -3,28 +3,43 @@ import AnimatedSection from '../components/AnimatedSection';
 ---
 
 <section class="relative">
-  <div class="relative h-[70vh] sm:h-[80vh] min-h-[500px] overflow-hidden">
+  <div class="relative h-[70vh] sm:h-[80vh] min-h-[500px] overflow-hidden bg-[#1a0e08]">
     <img
       src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80"
       alt="The pistachio-green interior of 118 Grinder with plants and rattan chairs"
-      class="w-full h-full object-cover"
+      class="w-full h-full object-cover opacity-70 mix-blend-luminosity"
       loading="lazy"
       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
     />
-    <div class="absolute inset-0 hidden items-center justify-center bg-deep-forest">
-      <svg class="w-20 h-20 text-pistachio/30" viewBox="0 0 64 64" fill="none">
-        <path d="M16 48c0-16 8-24 16-24s16 8 16 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M24 28c0-8 4-12 8-12s8 4 8 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <ellipse cx="32" cy="20" rx="6" ry="3" stroke="currentColor" stroke-width="2"/>
-        <path d="M42 20h4c4 0 6 3 6 7s-2 7-6 7h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M20 48h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <div class="absolute inset-0 hidden items-center justify-center bg-[#1a0e08]">
+      <svg viewBox="0 0 200 240" class="w-2/3 h-2/3 text-[#c97b3a]/40" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+        <circle cx="100" cy="100" r="90"/>
+        <circle cx="100" cy="100" r="60"/>
+        <circle cx="100" cy="100" r="30"/>
       </svg>
     </div>
-    <div class="absolute inset-0 bg-deep-forest/40" />
+
+    <!-- Espresso wash -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#1a0e08]/50 via-[#1a0e08]/30 to-[#1a0e08]/80"></div>
+    <div class="absolute inset-0 bg-blueprint opacity-25 pointer-events-none"></div>
+
+    <!-- Frame ticks -->
+    <span class="absolute top-6 left-6 w-8 h-8 border-l border-t border-[#c97b3a]"></span>
+    <span class="absolute top-6 right-6 w-8 h-8 border-r border-t border-[#c97b3a]"></span>
+    <span class="absolute bottom-6 left-6 w-8 h-8 border-l border-b border-[#c97b3a]"></span>
+    <span class="absolute bottom-6 right-6 w-8 h-8 border-r border-b border-[#c97b3a]"></span>
+
+    <!-- Caption strips -->
+    <div class="absolute top-6 inset-x-0 px-12 hidden sm:flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-[#c97b3a]/80">
+      <span>The Space — Plate № 02</span>
+      <span>Wangsa Maju · KL</span>
+    </div>
+
     <div class="absolute inset-0 flex items-center justify-center px-5">
       <AnimatedSection client:visible delay={0.2}>
         <blockquote class="max-w-3xl text-center">
-          <p class="font-display text-2xl sm:text-3xl lg:text-4xl text-cream italic leading-relaxed">
+          <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-[#c97b3a] block mb-6">— Manifesto</span>
+          <p class="font-display text-3xl sm:text-5xl lg:text-6xl text-[#f5ead4] leading-[1.05] uppercase tracking-tight">
             "Run by three young coffee lovers, in a corner of Wangsa Maju that feels like home."
           </p>
         </blockquote>
@@ -32,18 +47,28 @@ import AnimatedSection from '../components/AnimatedSection';
     </div>
   </div>
 
-  <div class="bg-cream py-16 sm:py-20">
-    <div class="mx-auto max-w-3xl px-5 sm:px-8 text-center space-y-6">
-      <AnimatedSection client:visible>
-        <p class="text-base sm:text-lg text-sage-grey leading-relaxed">
-          The bar is pistachio green. The chairs are rattan. The plants don't fake. We've been here a while now, and it still feels like the first week.
-        </p>
-      </AnimatedSection>
-      <AnimatedSection client:visible delay={0.15}>
-        <p class="text-base sm:text-lg text-sage-grey leading-relaxed">
-          Three young owners, one quiet corner, and coffee pulled with the kind of care that doesn't need to shout.
-        </p>
-      </AnimatedSection>
+  <div class="bg-[#f5ead4] py-16 sm:py-24 relative">
+    <div class="absolute inset-0 bg-blueprint-fine opacity-40 pointer-events-none"></div>
+    <div class="relative mx-auto max-w-3xl px-5 sm:px-8">
+      <div class="grid grid-cols-12 gap-6 items-start">
+        <div class="col-span-12 sm:col-span-3">
+          <span class="display-num text-[#c97b3a] text-5xl">03</span>
+          <div class="font-mono text-[10px] uppercase tracking-[0.3em] text-[#5c5048] mt-2">Founders<br/>One Corner</div>
+        </div>
+        <div class="col-span-12 sm:col-span-9 space-y-6">
+          <AnimatedSection client:visible>
+            <p class="text-base sm:text-lg text-[#3a2a20] leading-relaxed font-body">
+              The bar is pistachio green. The chairs are rattan. The plants don't fake. We've been here a while now, and it still feels like the first week.
+            </p>
+          </AnimatedSection>
+          <AnimatedSection client:visible delay={0.15}>
+            <p class="text-base sm:text-lg text-[#3a2a20] leading-relaxed font-body italic">
+              Three young owners, one quiet corner, and coffee pulled with the kind of care that doesn't need to shout.
+            </p>
+          </AnimatedSection>
+          <hr class="rule-hash" />
+        </div>
+      </div>
     </div>
   </div>
 </section>

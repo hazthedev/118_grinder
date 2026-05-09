@@ -4,11 +4,13 @@ import Button from '../components/Button.astro';
 import site from '../data/site.json';
 ---
 
-<section class="bg-cream py-20 sm:py-28">
-  <Container>
-    <div class="text-center max-w-xl mx-auto space-y-6">
-      <h2 class="font-display text-2xl sm:text-3xl text-deep-forest">See you soon?</h2>
-      <p class="text-base text-sage-grey leading-relaxed">
+<section class="relative bg-[#f5ead4] py-20 sm:py-28">
+  <div class="absolute inset-0 bg-blueprint opacity-30 pointer-events-none"></div>
+  <Container class="relative">
+    <div class="text-center max-w-2xl mx-auto space-y-6">
+      <span class="stamp justify-center" style="display:inline-flex;">Direct Line</span>
+      <h2 class="font-display text-5xl sm:text-6xl lg:text-7xl text-espresso uppercase tracking-tight leading-[0.95]">See you soon?</h2>
+      <p class="text-base sm:text-lg text-[#3a2a20] leading-relaxed font-body italic">
         WhatsApp us — for table holds, custom cake orders, or just to ask if your favorite's in stock today.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">

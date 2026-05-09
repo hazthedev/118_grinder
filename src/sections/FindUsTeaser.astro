@@ -11,12 +11,17 @@ const todayHours = site.hours[todayName];
 const isClosed = todayHours.closed;
 ---
 
-<section class="bg-off-white py-20 sm:py-28">
-  <Container>
+<section class="relative bg-[#f5ead4] py-20 sm:py-28">
+  <div class="absolute inset-0 bg-blueprint opacity-30 pointer-events-none"></div>
+  <Container class="relative">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       <!-- Map preview -->
       <AnimatedSection client:visible>
-        <div class="relative aspect-[4/3] rounded-3xl overflow-hidden bg-wheat-beige">
+        <div class="relative aspect-[4/3] overflow-hidden bg-[#1a0e08] border border-[#1a0e08]/20">
+          <span class="absolute top-0 left-0 w-6 h-6 border-l border-t border-[#c97b3a] z-10"></span>
+          <span class="absolute top-0 right-0 w-6 h-6 border-r border-t border-[#c97b3a] z-10"></span>
+          <span class="absolute bottom-0 left-0 w-6 h-6 border-l border-b border-[#c97b3a] z-10"></span>
+          <span class="absolute bottom-0 right-0 w-6 h-6 border-r border-b border-[#c97b3a] z-10"></span>
           <iframe
             src={site.googleMapsEmbed}
             width="100%"
@@ -26,41 +31,45 @@ const isClosed = todayHours.closed;
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="118 Grinder location on Google Maps"
-            class="absolute inset-0 w-full h-full grayscale-[20%]"
+            class="absolute inset-0 w-full h-full grayscale contrast-95"
           />
+          <div class="absolute top-3 inset-x-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-[#c97b3a] z-10">
+            <span>Site Plan · 03°10'N</span>
+            <span>101°44'E</span>
+          </div>
         </div>
       </AnimatedSection>
 
       <!-- Details -->
       <StaggerContainer client:visible className="flex flex-col gap-6" staggerDelay={0.1}>
         <StaggerItem>
-          <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Find Us</span>
+          <span class="stamp">Find Us</span>
         </StaggerItem>
         <StaggerItem>
-          <h2 class="font-display text-3xl sm:text-4xl text-deep-forest">See you soon?</h2>
+          <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-espresso uppercase tracking-tight leading-[0.95]">See you soon?</h2>
         </StaggerItem>
         <StaggerItem>
-          <p class="text-base text-sage-grey leading-relaxed">
+          <p class="text-base text-[#3a2a20] leading-relaxed font-body italic">
             65, Jalan Wangsa Delima 5, Wangsa Maju. Same street as Pizzaiolo and Tiffin 55 — we're two doors down at #65.
           </p>
         </StaggerItem>
 
         <StaggerItem>
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-3 text-sm">
-              <svg class="text-pistachio shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span class="text-deep-forest">{site.address.street}, {site.address.area}, {site.address.postcode} {site.address.city}</span>
+          <div class="flex flex-col divide-y divide-[#1a0e08]/15 border-y border-[#1a0e08]/15">
+            <div class="flex items-center gap-3 text-sm py-3">
+              <svg class="text-[#c97b3a] shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="text-espresso">{site.address.street}, {site.address.area}, {site.address.postcode} {site.address.city}</span>
             </div>
-            <div class="flex items-center gap-3 text-sm">
-              <svg class="text-pistachio shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="text-deep-forest hover:text-forest-green hover-color">{site.phone}</a>
+            <div class="flex items-center gap-3 text-sm py-3">
+              <svg class="text-[#c97b3a] shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="text-espresso link-copper">{site.phone}</a>
             </div>
-            <div class="flex items-center gap-3 text-sm">
-              <svg class="text-pistachio shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div class="flex items-center gap-3 text-sm py-3">
+              <svg class="text-[#c97b3a] shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               {isClosed ? (
-                <span class="text-terracotta font-medium">Closed today (Monday) — our day off</span>
+                <span class="text-[#c97b3a] font-mono uppercase tracking-[0.2em] text-xs">Closed today (Monday) — our day off</span>
               ) : (
-                <span class="text-deep-forest">Open today: {todayHours.open} – {todayHours.close}</span>
+                <span class="text-espresso">Open today: <span class="font-mono text-[#c97b3a]">{todayHours.open} – {todayHours.close}</span></span>
               )}
             </div>
           </div>

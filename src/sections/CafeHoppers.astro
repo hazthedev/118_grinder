@@ -10,18 +10,19 @@ const spots = [
 ];
 ---
 
-<section class="bg-off-white py-20 sm:py-28">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-    <AnimatedSection client:visible className="text-center mb-12 sm:mb-16">
-      <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Instagrammable</span>
-      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-deep-forest mt-3">
+<section class="relative bg-[#f5ead4] py-20 sm:py-28">
+  <div class="absolute inset-0 bg-blueprint opacity-30 pointer-events-none"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+    <AnimatedSection client:visible className="mb-12 sm:mb-16">
+      <span class="stamp">Field Studies · Frame-Worthy</span>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-espresso uppercase tracking-tight leading-[0.95] mt-4 max-w-3xl">
         Bring your camera. Most of our regulars do.
       </h2>
     </AnimatedSection>
     <StaggerContainer client:visible className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" staggerDelay={0.1}>
-      {spots.map((spot) => (
+      {spots.map((spot, i) => (
         <StaggerItem>
-          <div class="aspect-square rounded-2xl overflow-hidden bg-wheat-beige">
+          <div class="relative aspect-square overflow-hidden bg-[#1a0e08] border border-[#1a0e08]/15 group">
             <img
               src={spot.src}
               alt={spot.alt}
@@ -29,6 +30,8 @@ const spots = [
               loading="lazy"
               onerror="this.style.display='none'"
             />
+            <span class="absolute top-2 left-2 font-mono text-[9px] uppercase tracking-[0.3em] text-[#f5ead4]/90 bg-[#1a0e08]/60 px-1.5 py-0.5">№ 0{i+1}</span>
+            <span class="absolute bottom-2 right-2 w-4 h-4 border-r border-b border-[#c97b3a]/80"></span>
           </div>
         </StaggerItem>
       ))}

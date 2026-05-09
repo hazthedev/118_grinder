@@ -5,26 +5,73 @@ import Button from '../components/Button.astro';
 const isMonday = new Date().getDay() === 1;
 ---
 
-<section class="relative overflow-hidden bg-off-white">
-  <Container class="relative z-10">
-    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 py-16 sm:py-24 lg:py-32">
-      <!-- Text -->
-      <div class="flex-1 flex flex-col gap-6 lg:gap-8 text-center lg:text-left">
-        <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green hero-animate hero-delay-1">
-          Wangsa Maju &middot; Coffee Bar &middot; Dessert
-        </span>
+<section class="relative overflow-hidden bg-[#f5ead4]">
+  <!-- Blueprint grid -->
+  <div class="absolute inset-0 bg-blueprint opacity-70 pointer-events-none"></div>
 
-        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-deep-forest leading-[1.1] hero-animate hero-delay-2">
-          A quiet corner for serious coffee.
+  <!-- Slow-rotating burr grinder schematic -->
+  <div class="pointer-events-none absolute -right-40 top-1/2 -translate-y-1/2 w-[680px] h-[680px] hidden lg:block opacity-[0.18]">
+    <svg viewBox="0 0 400 400" class="w-full h-full burr-spin text-[#c97b3a]" fill="none" stroke="currentColor" stroke-width="0.7" aria-hidden="true">
+      <circle cx="200" cy="200" r="195" />
+      <circle cx="200" cy="200" r="160" />
+      <circle cx="200" cy="200" r="120" />
+      <circle cx="200" cy="200" r="80" />
+      <circle cx="200" cy="200" r="40" />
+      <circle cx="200" cy="200" r="6" fill="currentColor" />
+      <!-- burr teeth -->
+      {Array.from({ length: 36 }).map((_, i) => (
+        <line x1="200" y1="40" x2="200" y2="80" transform={`rotate(${i * 10} 200 200)`} stroke-width="1.5" />
+      ))}
+      {Array.from({ length: 24 }).map((_, i) => (
+        <line x1="200" y1="120" x2="200" y2="155" transform={`rotate(${i * 15} 200 200)`} stroke-width="1.2" />
+      ))}
+      <!-- crosshairs -->
+      <line x1="0" y1="200" x2="400" y2="200" stroke-dasharray="2 6" stroke-width="0.5" />
+      <line x1="200" y1="0" x2="200" y2="400" stroke-dasharray="2 6" stroke-width="0.5" />
+    </svg>
+  </div>
+
+  <!-- Reverse spinning ring outer -->
+  <div class="pointer-events-none absolute -left-32 -bottom-32 w-[420px] h-[420px] hidden lg:block opacity-[0.10]">
+    <svg viewBox="0 0 400 400" class="w-full h-full burr-spin-rev text-[#1a0e08]" fill="none" stroke="currentColor" stroke-width="0.6" aria-hidden="true">
+      <circle cx="200" cy="200" r="195" />
+      <circle cx="200" cy="200" r="170" stroke-dasharray="3 9" />
+      <circle cx="200" cy="200" r="140" />
+      {Array.from({ length: 60 }).map((_, i) => (
+        <line x1="200" y1="5" x2="200" y2="22" transform={`rotate(${i * 6} 200 200)`} />
+      ))}
+    </svg>
+  </div>
+
+  <Container class="relative z-10">
+    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 py-20 sm:py-28 lg:py-36">
+      <!-- Text -->
+      <div class="flex-1 flex flex-col gap-7 text-center lg:text-left">
+        <div class="hero-animate hero-delay-1 flex items-center gap-4 justify-center lg:justify-start">
+          <span class="stamp">Wangsa Maju · Coffee Bar · Dessert</span>
+        </div>
+
+        <h1 class="font-display text-5xl sm:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] text-espresso leading-[0.86] tracking-[-0.01em] uppercase hero-animate hero-delay-2 text-balance">
+          A quiet corner<br/>
+          for <span class="italic font-accent normal-case tracking-tight text-[#c97b3a] lowercase">serious</span><br/>
+          coffee.
         </h1>
 
-        <p class="text-base sm:text-lg text-sage-grey max-w-lg mx-auto lg:mx-0 leading-relaxed hero-animate hero-delay-3">
+        <!-- Spec / tasting notes line -->
+        <div class="hero-animate hero-delay-3 flex flex-wrap items-center gap-x-6 gap-y-2 justify-center lg:justify-start font-mono text-[11px] uppercase tracking-[0.25em] text-[#5c5048]">
+          <span><span class="text-[#c97b3a]">●</span> EST. KL</span>
+          <span><span class="text-[#c97b3a]">●</span> Halal Kitchen</span>
+          <span><span class="text-[#c97b3a]">●</span> Specialty Beans</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-[#3a2a20] max-w-lg mx-auto lg:mx-0 leading-relaxed font-body italic hero-animate hero-delay-3">
           Aesthetic minimalist cafe with specialty coffee, viral desserts, and a pistachio-green corner that's been everyone's favorite spot since opening.
         </p>
 
         {isMonday && (
-          <p class="text-sm font-medium text-terracotta hero-animate hero-delay-4">
-            Closed today (Monday) — see you tomorrow!
+          <p class="font-mono text-xs uppercase tracking-[0.3em] text-[#c97b3a] hero-animate hero-delay-4">
+            <span class="inline-block w-2 h-2 bg-[#c97b3a] mr-2 align-middle"></span>
+            Closed today (Monday) — see you tomorrow
           </p>
         )}
 
@@ -32,11 +79,35 @@ const isMonday = new Date().getDay() === 1;
           <Button href="/menu" variant="filled">See the Menu</Button>
           <Button href="/visit" variant="outline">Visit Us</Button>
         </div>
+
+        <!-- Big spec numbers -->
+        <div class="hero-animate hero-delay-5 grid grid-cols-3 gap-4 mt-10 max-w-md mx-auto lg:mx-0 border-t border-[#1a0e08]/15 pt-6">
+          <div>
+            <div class="display-num text-3xl sm:text-4xl">07</div>
+            <div class="font-mono text-[10px] uppercase tracking-[0.25em] text-[#5c5048] mt-1">Days <span class="text-[#c97b3a]">·</span> 6 open</div>
+          </div>
+          <div>
+            <div class="display-num text-3xl sm:text-4xl">94<span class="text-[#c97b3a] text-xl align-top">°</span></div>
+            <div class="font-mono text-[10px] uppercase tracking-[0.25em] text-[#5c5048] mt-1">Brew Temp · C</div>
+          </div>
+          <div>
+            <div class="display-num text-3xl sm:text-4xl">4.8<span class="text-[#c97b3a] text-xl">★</span></div>
+            <div class="font-mono text-[10px] uppercase tracking-[0.25em] text-[#5c5048] mt-1">Google · Regulars</div>
+          </div>
+        </div>
       </div>
 
       <!-- Image -->
-      <div class="flex-1 w-full max-w-md lg:max-w-none">
-        <div class="relative aspect-[4/5] rounded-3xl overflow-hidden bg-wheat-beige">
+      <div class="flex-1 w-full max-w-md lg:max-w-none hero-animate hero-delay-3">
+        <div class="relative aspect-[4/5] overflow-hidden bg-[#1a0e08] border border-[#1a0e08]/20">
+          <!-- Frame ticks -->
+          <div class="pointer-events-none absolute inset-0 z-20">
+            <span class="absolute top-0 left-0 w-6 h-6 border-l border-t border-[#c97b3a]"></span>
+            <span class="absolute top-0 right-0 w-6 h-6 border-r border-t border-[#c97b3a]"></span>
+            <span class="absolute bottom-0 left-0 w-6 h-6 border-l border-b border-[#c97b3a]"></span>
+            <span class="absolute bottom-0 right-0 w-6 h-6 border-r border-b border-[#c97b3a]"></span>
+          </div>
+
           <img
             src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=900&q=80"
             alt="The pistachio-green bar at 118 Grinder with a Spanish Latte in the foreground"
@@ -44,32 +115,36 @@ const isMonday = new Date().getDay() === 1;
             loading="eager"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
           />
-          <div class="absolute inset-0 hidden items-center justify-center bg-wheat-beige">
-            <svg class="w-16 h-16 text-pistachio/40" viewBox="0 0 64 64" fill="none">
-              <path d="M16 48c0-16 8-24 16-24s16 8 16 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M24 28c0-8 4-12 8-12s8 4 8 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <ellipse cx="32" cy="20" rx="6" ry="3" stroke="currentColor" stroke-width="2"/>
-              <path d="M42 20h4c4 0 6 3 6 7s-2 7-6 7h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M20 48h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <!-- Inline SVG fallback: V60 + bean -->
+          <div class="absolute inset-0 hidden items-center justify-center">
+            <svg viewBox="0 0 200 240" class="w-3/4 h-3/4 text-[#c97b3a]/70" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M40 80 L100 200 L160 80 Z" />
+              <path d="M50 90 L150 90" />
+              <path d="M60 110 L140 110" />
+              <path d="M70 130 L130 130" />
+              <ellipse cx="100" cy="60" rx="50" ry="14" />
+              <path d="M100 60 Q100 30 120 30" stroke-dasharray="3 3" />
+              <ellipse cx="120" cy="20" rx="18" ry="9" />
+              <path d="M110 22 Q120 14 130 22" />
             </svg>
           </div>
-          <!-- Decorative leaf -->
-          <img
-            src="/decorations/leaf-branch.svg"
-            alt=""
-            class="absolute -bottom-8 -right-8 w-32 h-48 opacity-40 pointer-events-none"
-            aria-hidden="true"
-          />
+
+          <!-- Photo caption strip -->
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#1a0e08] via-[#1a0e08]/70 to-transparent p-4 pt-16 z-10">
+            <div class="flex items-center justify-between text-[#f5ead4] font-mono text-[10px] uppercase tracking-[0.28em]">
+              <span>Plate № 01 · The Bar</span>
+              <span class="text-[#c97b3a]">f/2.8 · 50mm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Annotation under image -->
+        <div class="hidden lg:flex items-center gap-3 mt-4 font-mono text-[10px] uppercase tracking-[0.28em] text-[#5c5048]">
+          <span>fig. A</span>
+          <span class="flex-1 h-px bg-[#1a0e08]/20"></span>
+          <span class="text-[#c97b3a]">Pistachio Bar — interior</span>
         </div>
       </div>
     </div>
   </Container>
-
-  <!-- Background decoration -->
-  <img
-    src="/decorations/leaf-ring.svg"
-    alt=""
-    class="absolute -top-20 -left-20 w-64 h-64 opacity-[0.06] pointer-events-none"
-    aria-hidden="true"
-  />
 </section>

@@ -18,29 +18,36 @@ const todayIndex = new Date().getDay();
 const todayKey = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][todayIndex] as typeof schedule[number]['key'];
 ---
 
-<section class="bg-off-white py-20 sm:py-28">
-  <Container>
+<section class="relative bg-[#f5ead4] py-20 sm:py-28">
+  <div class="absolute inset-0 bg-blueprint opacity-30 pointer-events-none"></div>
+  <Container class="relative">
     <AnimatedSection client:visible className="max-w-xl mx-auto">
-      <div class="text-center mb-10">
-        <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Hours</span>
-        <h2 class="font-display text-3xl sm:text-4xl text-deep-forest mt-3">When we're open</h2>
+      <div class="mb-10">
+        <span class="stamp">Operating Hours · 24h</span>
+        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-espresso uppercase tracking-tight leading-[0.95] mt-3">When we're open</h2>
       </div>
     </AnimatedSection>
 
     <StaggerContainer client:visible className="max-w-xl mx-auto" staggerDelay={0.06}>
-      <div class="bg-cream rounded-2xl overflow-hidden border border-wheat-beige/50">
+      <div class="bg-[#1a0e08] text-[#f5ead4] overflow-hidden border border-[#1a0e08]">
+        <div class="flex items-center justify-between px-6 py-3 border-b border-[#c97b3a]/30 font-mono text-[10px] uppercase tracking-[0.3em] text-[#c97b3a]">
+          <span>Day</span>
+          <span>Window</span>
+        </div>
         {schedule.map((day, i) => {
           const hours = site.hours[day.key];
           const isToday = day.key === todayKey;
           const isClosed = hours.closed;
           return (
             <StaggerItem>
-              <div class={`flex items-center justify-between px-6 py-4 ${i !== schedule.length - 1 ? 'border-b border-wheat-beige/40' : ''} ${isToday ? 'bg-pistachio/10' : ''}`}>
-                <span class={`text-sm font-medium ${isToday ? 'text-deep-forest' : 'text-sage-grey'}`}>
-                  {day.label} {isToday && <span class="text-[10px] uppercase tracking-wider text-pistachio ml-1">(today)</span>}
+              <div class={`flex items-center justify-between px-6 py-4 ${i !== schedule.length - 1 ? 'border-b border-[#c97b3a]/15' : ''} ${isToday ? 'bg-[#c97b3a]/15' : ''}`}>
+                <span class={`font-display text-lg tracking-wide uppercase flex items-center gap-2 ${isToday ? 'text-[#f5ead4]' : 'text-[#e8c89a]'}`}>
+                  {isToday && <span class="w-2 h-2 bg-[#c97b3a] rounded-none"></span>}
+                  {day.label}
+                  {isToday && <span class="text-[9px] font-mono uppercase tracking-[0.3em] text-[#c97b3a] ml-1">[today]</span>}
                 </span>
-                <span class={`text-sm ${isClosed ? 'text-pistachio font-semibold' : 'text-deep-forest'}`}>
-                  {isClosed ? `Closed — our day off` : `${hours.open} – ${hours.close}`}
+                <span class={`font-mono text-sm tracking-wider ${isClosed ? 'text-[#c97b3a] uppercase text-xs' : 'text-[#f5ead4]'}`}>
+                  {isClosed ? `Closed — day off` : `${hours.open} – ${hours.close}`}
                 </span>
               </div>
             </StaggerItem>

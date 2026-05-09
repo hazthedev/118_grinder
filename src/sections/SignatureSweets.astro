@@ -36,22 +36,32 @@ const sweets = [
 ];
 ---
 
-<section class="bg-cream">
-  <Container class="py-20 sm:py-28">
+<section class="relative bg-[#1a0e08] text-[#f5ead4]">
+  <div class="absolute inset-0 bg-blueprint-fine opacity-40 pointer-events-none"></div>
+  <Container class="relative py-20 sm:py-28">
+    <div class="absolute top-10 right-6 hidden md:flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#c97b3a]/70">
+      <span>Series — B</span>
+      <span class="block w-12 h-px bg-[#c97b3a]"></span>
+      <span>Pastry Roster</span>
+    </div>
     <StaggerContainer client:visible className="mb-12 sm:mb-16" staggerDelay={0.08}>
       <StaggerItem>
-        <SectionHeading
-          eyebrow="Sweet Things"
-          title="Small menu, made fresh."
-          subtitle="Best enjoyed slowly, with a second drink you didn't plan on ordering."
-        />
+        <div class="flex flex-col gap-4 items-start text-left">
+          <span class="stamp" style="color:#c97b3a;">Sweet Things</span>
+          <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-[#f5ead4] leading-[0.95] tracking-tight uppercase">
+            Small menu, made fresh.
+          </h2>
+          <p class="max-w-xl text-base sm:text-lg text-[#e8c89a] leading-relaxed italic">
+            Best enjoyed slowly, with a second drink you didn't plan on ordering.
+          </p>
+        </div>
       </StaggerItem>
     </StaggerContainer>
 
     <StaggerContainer client:visible className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" staggerDelay={0.1}>
-      {sweets.map((sweet) => (
+      {sweets.map((sweet, i) => (
         <StaggerItem>
-          <MenuCard {...sweet} />
+          <MenuCard {...sweet} index={i} />
         </StaggerItem>
       ))}
     </StaggerContainer>

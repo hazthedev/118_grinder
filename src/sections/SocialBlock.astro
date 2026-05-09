@@ -5,12 +5,13 @@ import StaggerContainer, { StaggerItem } from '../components/StaggerContainer';
 import site from '../data/site.json';
 ---
 
-<section class="bg-cream py-20 sm:py-28">
-  <Container>
-    <AnimatedSection client:visible className="max-w-xl mx-auto text-center space-y-6 mb-12">
-      <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">Social</span>
-      <h2 class="font-display text-3xl sm:text-4xl text-deep-forest">Follow along</h2>
-      <p class="text-base text-sage-grey leading-relaxed">
+<section class="relative bg-[#f5ead4] py-20 sm:py-28">
+  <div class="absolute inset-0 bg-blueprint opacity-30 pointer-events-none"></div>
+  <Container class="relative">
+    <AnimatedSection client:visible className="max-w-xl mx-auto text-center mb-12">
+      <span class="stamp justify-center" style="display:inline-flex;">Social · Broadcast</span>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-espresso uppercase tracking-tight leading-[0.95] mt-4">Follow along</h2>
+      <p class="text-base text-[#3a2a20] leading-relaxed font-body italic mt-4">
         Our Instagram is where the daily specials, new desserts, and quiet cafe moments live first.
       </p>
     </AnimatedSection>
@@ -21,13 +22,17 @@ import site from '../data/site.json';
           href={site.social.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          class="group flex flex-col items-center gap-4 bg-off-white rounded-2xl p-8 border border-wheat-beige/50 hover-lift"
+          class="card-spec group flex flex-col items-start gap-4 p-8"
         >
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-pistachio"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          <div class="text-center">
-            <p class="font-display text-lg text-deep-forest">@118grinder</p>
-            <p class="text-sm text-sage-grey mt-1">Daily specials & cafe moments</p>
+          <div class="flex items-center justify-between w-full">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="text-[#c97b3a]"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-[#5c5048]">CH · 01</span>
           </div>
+          <div>
+            <p class="font-display text-3xl tracking-wide uppercase text-espresso">@118grinder</p>
+            <p class="text-sm text-[#5c5048] mt-1 font-body italic">Daily specials & cafe moments</p>
+          </div>
+          <hr class="rule-hash w-full" />
         </a>
       </StaggerItem>
 
@@ -36,13 +41,17 @@ import site from '../data/site.json';
           href={site.social.tiktok}
           target="_blank"
           rel="noopener noreferrer"
-          class="group flex flex-col items-center gap-4 bg-off-white rounded-2xl p-8 border border-wheat-beige/50 hover-lift"
+          class="card-spec group flex flex-col items-start gap-4 p-8"
         >
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="text-pistachio"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.88-2.89 2.89 2.89 0 0 1 2.88-2.89c.3 0 .58.06.85.14V9.4a6.37 6.37 0 0 0-.85-.06A6.34 6.34 0 0 0 3.1 15.68a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.47a8.18 8.18 0 0 0 4.8 1.55V6.82a4.85 4.85 0 0 1-1-.13z"/></svg>
-          <div class="text-center">
-            <p class="font-display text-lg text-deep-forest">@118grindercafe</p>
-            <p class="text-sm text-sage-grey mt-1">Behind the scenes & vibes</p>
+          <div class="flex items-center justify-between w-full">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="text-[#c97b3a]"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.88-2.89 2.89 2.89 0 0 1 2.88-2.89c.3 0 .58.06.85.14V9.4a6.37 6.37 0 0 0-.85-.06A6.34 6.34 0 0 0 3.1 15.68a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.47a8.18 8.18 0 0 0 4.8 1.55V6.82a4.85 4.85 0 0 1-1-.13z"/></svg>
+            <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-[#5c5048]">CH · 02</span>
           </div>
+          <div>
+            <p class="font-display text-3xl tracking-wide uppercase text-espresso">@118grindercafe</p>
+            <p class="text-sm text-[#5c5048] mt-1 font-body italic">Behind the scenes & vibes</p>
+          </div>
+          <hr class="rule-hash w-full" />
         </a>
       </StaggerItem>
     </StaggerContainer>

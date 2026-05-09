@@ -12,17 +12,17 @@ const { eyebrow, title, subtitle, align = 'left', class: className = '' } = Astr
 const alignClass = align === 'center' ? 'text-center items-center' : 'text-left items-start';
 ---
 
-<div class={`flex flex-col gap-3 ${alignClass} ${className}`}>
+<div class={`flex flex-col gap-4 ${alignClass} ${className}`}>
   {eyebrow && (
-    <span class="text-xs font-medium uppercase tracking-[0.2em] text-forest-green">
+    <span class="stamp">
       {eyebrow}
     </span>
   )}
-  <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-deep-forest leading-tight">
+  <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-espresso leading-[0.95] tracking-tight uppercase text-balance">
     {title}
   </h2>
   {subtitle && (
-    <p class="max-w-xl text-base sm:text-lg text-sage-grey leading-relaxed">
+    <p class="max-w-xl text-base sm:text-lg text-[#5c5048] leading-relaxed font-body italic">
       {subtitle}
     </p>
   )}
